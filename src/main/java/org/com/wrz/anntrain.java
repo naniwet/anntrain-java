@@ -16,7 +16,7 @@ import org.opencv.ml.Ml;
 import org.opencv.ml.TrainData;
 
 
-public class test {
+public class anntrain {
     static {
         //加载opencv动态链接库
         String path = "D:/opencv3.4/opencv/build/java/x86/opencv_java341.dll";
@@ -171,7 +171,7 @@ public class test {
     }
     public static void main(String[] args) {
 
-        test num=new test();
+        anntrain num=new anntrain();
         String xml="C:/Users/gpsts1/Desktop/PCB_ANN/src/main/java/mlp.xml";
         num.readImage(300);
         num.trainData(xml);
