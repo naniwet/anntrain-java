@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PCB_ANN.iml" filepath="$PROJECT_DIR$/PCB_ANN.iml" />
+      <module fileurl="file://$PROJECT_DIR$/UI/UI.iml" filepath="$PROJECT_DIR$/UI/UI.iml" />
+      <module fileurl="file://C:\Users\gpsts1\Desktop\PCB_ANN\UI\UI.iml" filepath="C:\Users\gpsts1\Desktop\PCB_ANN\UI\UI.iml" />
     </modules>
   </component>
 </project>

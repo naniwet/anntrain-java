@@ -12,9 +12,13 @@ public class App {
 
 
        // Mat src = Imgcodecs.imread("res/10.jpg", Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE); //读取原始电路板图片
-        ann ann=new ann("res/train/data", "res/train/ann.xml");
-        ann.train();
-
+//        ann ann=new ann("res/train/data", "res/train/ann.xml");
+//        ann.train();
+        anntrain ann = new anntrain();
+        String xml="C:/Users/gpsts1/Desktop/PCB_ANN/src/main/java/mlp.xml";
+        String path="C:\\Users\\gpsts1\\Desktop\\PCB_ANN\\res\\train\\data";
+        ann.trainData(xml);
+        ann.predictdata(xml,path);
 
 /*     ResLocate resLocate = new ResLocate();
         resLocate.resLocate(src);

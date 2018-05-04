@@ -151,9 +151,9 @@ public class anntrain {
     public char predict(String xml,String image){
         ANN_MLP ann = ANN_MLP.load(xml);
 
-        Mat image_src=Imgcodecs.imread(image,Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
+        Mat image_src = Imgcodecs.imread(image,Imgcodecs.CV_LOAD_IMAGE_GRAYSCALE);
 
-        Mat image_temp= feature.getLBPFeatures(image_src);
+        Mat image_temp = feature.getLBPFeatures(image_src);
 
 
         Mat predict=new Mat(1,class_num,CvType.CV_32FC1);
@@ -169,37 +169,61 @@ public class anntrain {
         return result;
 
     }
-    public static void main(String[] args) {
+//    public static void main(String[] args) {
+//
+//        anntrain num=new anntrain();
+//        String xml="C:/Users/gpsts1/Desktop/PCB_ANN/src/main/java/mlp.xml";
+//        num.trainData(xml);
+//        int corrects = 0;
+//        int sum = 0;
+//        String path="C:\\Users\\gpsts1\\Desktop\\PCB_ANN\\res\\train\\data";
+//        List<String> paths=new ArrayList();
+//        getDir(path,paths);
+//        for(int i=0;i<paths.size();i++) {
+//            char char_key = KChars[i];
+//            String sub_folder= path+"/"+char_key+"/test";
+//            List<String> listfile = getAllFiles(sub_folder);
+//            int listsize = listfile.size();
+//            System.out.println( ">> Characters count now :"+listsize);  //文件夹下文件数量
+//            for (String file : listfile) {
+//                if(num.predict(xml, file)==(char_key))
+//                    corrects++;
+//                sum++;
+//            }
+//        }
+//        float rate = (float) corrects / (sum == 0 ? 1 : sum);
+//        System.out.println(corrects);
+//        System.out.println(sum);
+//        System.out.println(rate);
+//
+//    }
 
-        anntrain num=new anntrain();
-        String xml="C:/Users/gpsts1/Desktop/PCB_ANN/src/main/java/mlp.xml";
-        num.readImage(300);
-        num.trainData(xml);
+    public void predictdata(String xml,String path){
         int corrects = 0;
         int sum = 0;
-        String path="C:\\Users\\gpsts1\\Desktop\\PCB_ANN\\res\\train\\data";
-        List<String> paths=new ArrayList();
+        List<String> paths = new ArrayList();
         getDir(path,paths);
-        for(int i=0;i<paths.size();i++) {
+        for(int i=0;i<paths.size();i++)
+        {
             char char_key = KChars[i];
-            String sub_folder= path+"/"+char_key+"/test";
+            String sub_folder = path+"/"+char_key+"/test";
             List<String> listfile = getAllFiles(sub_folder);
             int listsize = listfile.size();
-            System.out.println( ">> Characters count now :"+listsize);  //文件夹下文件数量
-            for (String file : listfile) {
-                if(num.predict(xml, file)==(char_key))
+            System.out.println(">> Characters count now :"+listsize);
+            for (String file : listfile)
+            {
+                if(this.predict(xml,file)==char_key)
                     corrects++;
                 sum++;
             }
         }
-        float rate = (float) corrects / (sum == 0 ? 1 : sum);
+        float rate = (float) corrects / (sum==0?1:sum);
         System.out.println(corrects);
         System.out.println(sum);
         System.out.println(rate);
-
-
-//        num.predict(xml, "C:\\Users\\gpsts1\\Desktop\\PCB_ANN\\res\\train\\test\\71.jpg");
     }
+
+
     public static List<String> getCharacters(String path){
         List<String> list=new ArrayList();
         File file=new File(path);
